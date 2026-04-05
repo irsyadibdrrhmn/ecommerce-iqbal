@@ -83,11 +83,9 @@ Route::resource('banners', BannerController::class);
 
 // ======================== ORDERS ========================
 Route::resource('orders', OrderController::class);
-Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 Route::put('/orders/update-resi/{order}', [OrderController::class, 'updateResi'])->name('orders.updateResi');
-Route::post('/orders/{id}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
+Route::post('/orders/{order}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
 Route::put('/orders/{order}/update-status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
-Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
 Route::delete('/order/{order}/home', [OrderController::class, 'cancel'])->name('orders.destroy.home');
 Route::get('/order/{id}/details', [OrderController::class, 'paymentDetails'])->name('orders.details');
 Route::get('/order', [AdminController::class, 'order'])->name('order');
