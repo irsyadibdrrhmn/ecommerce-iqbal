@@ -98,8 +98,6 @@ Route::post('/order/apply-voucher', [OrderController::class, 'applyVoucher'])->n
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
 Route::post('/checkout/selected', [CheckoutController::class, 'selected'])->name('checkout.selected');
-Route::get('/chekout', [CheckoutController::class, 'index'])->name('chekout.index');
-Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
 Route::get('/ongkir', [CheckoutController::class, 'ongkir_index'])->name('ongkir.index');
 Route::post('/cek-ongkir', [CheckoutController::class, 'cekOngkir'])->name('cek-ongkir');
 Route::post('save-ongkir', [CheckoutController::class, 'saveOngkir'])->name('save-ongkir');
