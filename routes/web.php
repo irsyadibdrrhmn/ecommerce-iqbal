@@ -68,13 +68,6 @@ Route::get('/product/data', [ProductController::class, 'showProductData'])->name
 
 // ======================== CATEGORIES ========================
 Route::resource('categories', CategoryController::class);
-Route::get('/categories.index', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 // ======================== DISCOUNTS ========================
 Route::resource('discounts', DiscountController::class);
