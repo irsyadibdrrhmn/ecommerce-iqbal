@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Skip view caching in production to avoid missing component errors
+        if ($this->app->environment('production')) {
+            \Illuminate\Support\Facades\Config::set('view.cache', false);
+        }
     }
 }
