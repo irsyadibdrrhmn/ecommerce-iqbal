@@ -104,14 +104,10 @@ Route::post('save-ongkir', [CheckoutController::class, 'saveOngkir'])->name('sav
 Route::post('/ongkir/set-session', [CheckoutController::class, 'setSession'])->name('ongkir.setSession');
 
 // ======================== CART ========================
-
-    Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
-    Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
-
-Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/delete', [CartController::class, 'destroy'])->name('cart.delete');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 
 // ======================== WISHLIST ========================
