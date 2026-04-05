@@ -48,7 +48,7 @@ The following files have been added for Railway deployment:
 
 Railway will automatically detect it's a PHP project. Configure as follows:
 
-- **Builder**: Heroku Buildpack (automatically selected)
+- **Builder**: Railpack (automatically selected - Railway's buildpack system)
 - **Start Command**: Will use Procfile
 
 ---
