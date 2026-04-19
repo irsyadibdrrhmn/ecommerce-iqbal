@@ -1,3 +1,8 @@
 #!/bin/bash
-# Skip view caching during build - we'll compile on demand
-exit 0
+set -euo pipefail
+
+# Build frontend assets so pages that depend on Vite/Tailwind are styled in production.
+if [ -f package.json ]; then
+  npm ci
+  npm run build
+fi
