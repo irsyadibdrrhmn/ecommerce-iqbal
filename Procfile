@@ -1,4 +1,3 @@
-web: php artisan migrate --force && php artisan storage:link && php -S 0.0.0.0:8080 -t public
-release: npm run build
-queue: php artisan queue:work --wait=3
+web: php artisan migrate --force && php artisan storage:link || true && php artisan serve --host=0.0.0.0 --port=${PORT}
+queue: php artisan queue:work --tries=3 --timeout=90
 scheduler: php artisan schedule:work
