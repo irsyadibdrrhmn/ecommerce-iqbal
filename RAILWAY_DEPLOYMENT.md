@@ -60,7 +60,8 @@ Pastikan file berikut ada dan sudah di-push:
 Gunakan format berikut agar Railway bisa routing trafik ke service kamu:
 
 ```procfile
-web: php artisan migrate --force && php artisan storage:link || true && php artisan serve --host=0.0.0.0 --port=${PORT}
+web: php artisan migrate --force && php artisan storage:link || true && php -S 0.0.0.0:${PORT} -t public
+release: npm ci && npm run build
 queue: php artisan queue:work --tries=3 --timeout=90
 scheduler: php artisan schedule:work
 ```
@@ -153,10 +154,20 @@ Yang harus terlihat sukses:
 
 ---
 
+
+## 8.1) Cegah tampilan berantakan (CSS/JS tidak ter-load)
+
+Jika halaman tampil polos (seperti CSS tidak kebaca), biasanya asset Vite belum dibuild di environment Railway.
+
+Solusi di project ini:
+1. Pastikan `Procfile` punya `release: npm ci && npm run build`.
+2. Pastikan `railpack.build.sh` menjalankan `npm ci` dan `npm run build`.
+3. Redeploy lalu cek tidak ada error di tahap build frontend.
+
 ## 9) Checklist debug cepat (kalau masih gagal)
 
 ### A. Error: "Application failed to respond"
-- Pastikan `web` process memakai `--port=${PORT}`.
+- Pastikan `web` process memakai `${PORT}` dan document root `public` (`php -S 0.0.0.0:${PORT} -t public`).
 - Pastikan process bertipe **web** (bukan worker).
 
 ### B. Error: "No application encryption key has been specified"
